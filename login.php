@@ -6,7 +6,7 @@ include_once ('db_config.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
-
+    <link rel="stylesheet" href="w3css.css">
 </head>
 <body>
 <?php
@@ -42,12 +42,12 @@ and password='".md5($password)."'";
     }
 }else{
     ?>
-    <div class="form">
+    <div class="form" style="padding-left:300px; padding-right:300px">
         <h1>Prijava</h1>
         <form action="" method="post" name="login">
-            <input type="text" name="username" placeholder="Korisničko ime" required />
-            <input type="password" name="password" placeholder="Lozinka" required />
-            <input name="submit" type="submit" value="Prijava" />
+            <input  class="w3-input w3-border w3-hover-light-gray" type="text" name="username" placeholder="Korisničko ime" required />
+            <input  class="w3-input w3-border w3-hover-light-gray" type="password" name="password" placeholder="Lozinka" required />
+            <input name="submit" type="submit" class="w3-button w3-light-blue" style="width:fit-content" value="Prijava" />
         </form>
         <p>Niste registrovani? <a href='registration.php'>Registrujte se ovde!</a></p>
     </div>

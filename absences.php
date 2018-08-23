@@ -80,7 +80,61 @@ VALUES ('$adriver', '$aoddate', '$adodate', '$areason')";
         }
     }
     ?>
+
+    <form name="registration" action="" method="post">
+        <input type="text" name="DRNUM" placeholder="Službeni broj" style="width:500px;" />
+        <select class="w3-select w3-light-gray" name="option">
+            <option value="" disabled selected>Odaberite opciju.</option>
+            <option value="BOLOVANJE">GRADSKI SOLO</option>
+            <option value="GODIŠNJI ODMOR">GRADSKI ZGLOBNI</option>
+            <option value="DRUGO">PRIGRADSKI</option>
+        </select>
+        <input type="submit" name="submit" value="Pretraži odsustva!" />
+    </form>
+
+
+    <table class="w3-table-all">
+        <tr>
+            <th>BR. VOZAČA</th>
+            <th>IME</th>
+            <th>PREZIME</th>
+            <th>DATUM OD</th>
+            <th>DATUM DO</th>
+            <th>RAZLOG</th>
+            <th>IZMENE</th>
+        </tr>
+        <?php
+        if (isset($_REQUEST['DRNUM'])) {
+            $drsearch=@$_REQUEST['DRNUM'];
+            $optionsearch=@$_REQUEST['option'];
+            $sql = "SELECT * FROM absences JOIN drivers where absences.ID_Driver = drivers.ID_Driver and (absences.ID_Driver=$drsearch) or (absences.Reason='$optionsearch')";
+            $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo '<tr><td>' . $record['ID_Driver'] . '</td><td>' . $record['First_Name'] . '</td>
+            <td>' . $record['Last_Name'] . '</td><td>' . $record['FromDate'] . '</td><td>' . $record['ToDate'] . '</td><td>' . $record['Reason'] . '</td>
+            <td>Edit, Delete</td></tr>';
+                }
+            }
+
+        } else {
+            $sql = "SELECT * FROM absences JOIN drivers where absences.ID_Driver = drivers.ID_Driver and absences.ToDate>now()";
+            $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo '<tr><td>' . $record['ID_Driver'] . '</td><td>' . $record['First_Name'] . '</td>
+            <td>' . $record['Last_Name'] . '</td><td>' . $record['FromDate'] . '</td><td>' . $record['ToDate'] . '</td><td>' . $record['Reason'] . '</td>
+            <td>Edit, Delete</td></tr>';
+                }
+            }
+        }?>
+    </table>
+
 </div>
+
+
 </body>
 
 </html>
