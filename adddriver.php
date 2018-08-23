@@ -14,7 +14,7 @@
         <h2>Dodaj vozača</h2>
     </div>
 
-    <form class="w3-container">
+    <form class="w3-container" method="post" action="EditDriver.php">
         <label class="w3-text-teal"><b>Službeni broj:</b></label>
         <input class="w3-input w3-border w3-light-grey" type="text" name="driverID">
 
@@ -40,8 +40,8 @@
         <label class="w3-text-teal"><b>Slika</b></label>
         <input class="w3-input w3-border w3-light-grey" type="file" name="upload">
 
-        <div id="ownBus">Own bus
-            <select>
+        <label class="w3-text-teal"><b>Broj autobusa</b></label>
+            <select class="w3-select w3-light-gray" name="ownBus">
                 <?php
                 echo '<option value="null">Nema</option>';
                 $sql = "SELECT ID_Bus FROM buses";
@@ -52,9 +52,9 @@
                         echo '<option value="' . $record['ID_Bus'] . '">' . $record['ID_Bus'] . '</option>';
                     }
                 } ?>
-            </select></div>
+            </select>
 
-        Digitalni tahograf
+        <label class="w3-text-teal"><b>Digitalni tahograf</b></label>
         <input type="radio" name="digitTach" value="1">DA
         <input type="radio" name="digitTach" value="0">NE<br/>
 

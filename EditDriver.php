@@ -1,16 +1,25 @@
 <?php
 include_once ('db_config.php');
 
+@$delid=$_GET['driveri'];
+@$id=$_POST['driverID'];
+@$fname=$_POST['driverFName'];
+@$lname=$_POST['driverLName'];
+@$pass=$_POST['password'];
+@$digit=$_POST['digitTach'];
+@$area=$_POST['area'];
+@$own=$_POST['ownBus'];
+@$upload=$_POST['upload'];
 
-$id=$_POST['driverID'];
-$fname=$_POST['driverFName'];
-$lname=$_POST['driverLName'];
-$pass=$_POST['password'];
-$digit=$_POST['digitTach'];
-$area=$_POST['area'];
-$own=$_POST['ownBus'];
-$upload=$_POST['upload'];
+if (isset($delid)){
+    $sql = "DELETE FROM drivers WHERE ID_Driver=$delid";
 
+if (mysqli_query($connection, $sql)) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . mysqli_error($connection);
+}}
+if($id&&$fname&&$lname){
 $sql = "SELECT ID_Driver FROM drivers";
 $result= mysqli_query($connection,$sql) or die(mysqli_error($connection));
 if (mysqli_num_rows($result)>0) {
@@ -30,5 +39,6 @@ else {
     $sql = "INSERT INTO drivers 
             VALUES ($id,'$fname','$lname','$pass',$digit,'$area',$own,'$upload')";
     $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
-}
-echo "valjda radi...ili ne?";
+}}
+header("Location: http://localhost/busrasporedrada2/listdrivers");
+exit();
