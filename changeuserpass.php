@@ -1,6 +1,8 @@
 <?php
 include_once ('db_config.php'); ?>
 
+// Ova stranica je završena i nema potrebe dalje je menjati.
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,6 +60,27 @@ include_once ('db_config.php'); ?>
         <p> </p>
         <button class="w3-btn w3-blue-grey">Dodaj autobus!</button>
     </form>
+
+    <?php
+    if (@isset($_REQUEST['pass1'])) {
+        $driver1 = stripslashes($_REQUEST['driver1']);
+        $driver2 = mysqli_real_escape_string($connection, $driver1);
+        $driver2 = stripslashes($_REQUEST['driver1']);
+        $driver2 = mysqli_real_escape_string($connection, $driver2);
+        $pass1 = stripslashes($_REQUEST['pass1']);
+        $pass2 = mysqli_real_escape_string($connection, $pass1);
+        $pass2 = stripslashes($_REQUEST['pass1']);
+        $pass2 = mysqli_real_escape_string($connection, $pass2);
+        if ($driver1 == $driver2 & $pass1 == $pass2)
+            $query = "UPDATE `drivers` SET Password='".md5($pass2)."' where ID_Driver=$driver1";
+        $result = mysqli_query($connection, $query);
+        if ($result) {
+            echo "<div class='form'>
+        <h3>Šifra za korisnika uspešno izmenjena!</h3>
+        </div>";
+        }
+    }
+    ?>
 
 </div>
 </body>
