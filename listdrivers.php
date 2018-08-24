@@ -24,7 +24,7 @@ include_once ('db_config.php'); ?>
         <h3>Dodaj vozača</h3>
         <button class="w3-btn w3-blue-grey" style="float: right" value="_" onclick="hideit('adddriver');">
     </div>
-    <div id="adddriver">
+    <div id="adddriver" style="display: none;">
         <form class="w3-container" method="post" action="EditDriver.php" >
             <label class="w3-text-teal"><b>Službeni broj:</b></label>
             <input class="w3-input w3-border w3-light-grey" type="text" name="driverID">
