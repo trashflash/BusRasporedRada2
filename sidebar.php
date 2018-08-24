@@ -1,6 +1,10 @@
 <head>
     <link rel="stylesheet" href="w3css.css">
 </head>
+
+// Potrebne izmene: Autentifikacij za administrativni deo!
+
+
 <div class="w3-sidebar w3-light-blue w3-bar-block" style="width:200px">
     <h3 class="w3-bar-item">Meni</h3>
     <a href="logout.php" class="w3-bar-item w3-button w3-blue-gray">Log out</a>
