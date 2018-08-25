@@ -5,16 +5,7 @@ include_once ('db_config.php'); ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="w3css.css">
-    <script type="text/javascript">
-        function hideit(id){
-            var el = document.getElementById(id);
-
-            if(el.style.display=='none')
-                el.style.display='inherit';
-            else
-                el.style.display='none';
-        }
-    </script>
+    <script src="Fun.js"></script>
 </head>
 <body>
 <?php include 'sidebar.php';?>
@@ -103,37 +94,10 @@ include_once ('db_config.php'); ?>
                         <td>' . $area . '</td>
                         <td>' . $record['Bus_Own'] . '</td>
                         <td>' . $dig . '</td>
-                        <td>MENJAJ / <a href="EditDriver.php?driveri='.$record['ID_Driver'].'" onclick="return confirm(\'Da li ste sigurni?\');">BRIŠI</a></td></tr>';
+                        <td>MENJAJ / <a href="EditDriver.php?drivers='.$record['ID_Driver'].'" onclick="return confirm(\'Da li ste sigurni?\');">BRIŠI</a></td></tr>';
             }
         }
         ?>
-        <tr>
-            <td>144</td>
-            <td><img src="sampledriv.PNG" style="height:50px"></td>
-            <td>Zoltan Bence, Boroš Šoroš</td>
-            <td>GRADSKI</td>
-            <td>107</td>
-            <td>NEMA</td>
-            <td>MENJAJ / BRIŠI</td>
-        </tr>
-        <tr>
-            <td>144</td>
-            <td><img src="sampledriv.PNG" style="height:50px"></td>
-            <td>Zoltan Bence, Boroš Šoroš</td>
-            <td>GRADSKI</td>
-            <td>107</td>
-            <td>NEMA</td>
-            <td>MENJAJ / BRIŠI</td>
-        </tr>
-        <tr>
-            <td>144</td>
-            <td><img src="sampledriv.PNG" style="height:50px"></td>
-            <td>Zoltan Bence, Boroš Šoroš</td>
-            <td>GRADSKI</td>
-            <td>107</td>
-            <td>NEMA</td>
-            <td>MENJAJ / BRIŠI</td>
-        </tr>
     </table>
     </div>
 
