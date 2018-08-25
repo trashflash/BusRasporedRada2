@@ -1,6 +1,6 @@
 <?php
-include_once ('db_config.php'); ?>
-
+include_once ('db_config.php');
+?>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@ include_once ('db_config.php'); ?>
             <label class="w3-text-teal"><b>Prezime</b></label>
             <input class="w3-input w3-border w3-light-grey" type="text" name="driverLName">
 
-            <label class="w3-text-teal"><b>Lozinka</b></label>
+             <label class="w3-text-teal"><b>Lozinka</b></label>
             <input class="w3-input w3-border w3-light-grey" type="password" name="password">
 
             <label class="w3-text-teal"><b>Područje rada</b></label>
@@ -73,6 +73,8 @@ include_once ('db_config.php'); ?>
             <th>IME, PREZIME</th>
             <th>PODRUČJE</th>
             <th>BUS</th>
+            <th>DANI/MESEC</th>
+            <th>SATI/MESEC</th>
             <th>DIG. TAH.</th>
             <th>IZMENE</th>
         </tr>
@@ -87,14 +89,22 @@ include_once ('db_config.php'); ?>
                 elseif ($record['Area']=3) $area='PRIGRADSKI'; elseif ($record['Area']=4) $area='MEĐUGRADSKI';
                 elseif ($record['Area']=5) $area='GRADSKI MINIBUS'; elseif ($record['Area']=6) $area='MEĐUGRADSKI MINIBUS';
                 else $area='TURISTIČKI';
+                $sqll = "SELECT count(distinct w.Date_Work) as datte,sum(w.Total_Time) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=" . $record['ID_Driver'] . "";
+                $resultl= mysqli_query($connection,$sqll) or die(mysqli_error($connection));
+                if (mysqli_num_rows($resultl)>0) {
+                            while ($recordl = mysqli_fetch_array($resultl, MYSQLI_ASSOC)) {
 
                 echo '<tr><td>' . $record['ID_Driver'] . '</td>
                         <td><img src="' . $record['Photo_Link_Driver'] . '" style="height:50px"></td>
                         <td>' . $record['First_Name'] . ', ' . $record['Last_Name'] . '</td>
                         <td>' . $area . '</td>
                         <td>' . $record['Bus_Own'] . '</td>
+                        <td>' . $recordl['datte'] . '</td>
+                        <td>' . $recordl['summ'] . '</td>
                         <td>' . $dig . '</td>
                         <td>MENJAJ / <a href="EditDriver.php?drivers='.$record['ID_Driver'].'" onclick="return confirm(\'Da li ste sigurni?\');">BRIŠI</a></td></tr>';
+                            }
+                }
             }
         }
         ?>
