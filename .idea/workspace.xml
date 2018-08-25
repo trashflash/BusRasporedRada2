@@ -133,10 +133,10 @@
         <entry file="file://$PROJECT_DIR$/admlogin.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="782">
-              <caret line="52" column="7" lean-forward="false" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
-                <marker date="1535045749185" expanded="true" signature="611:710" ph="SELECT ID_Dr... drivers" />
-                <marker date="1535045749185" expanded="true" signature="1227:1323" ph="..." />
+                <marker date="1535119381597" expanded="true" signature="611:710" ph="SELECT ID_Dr... drivers" />
+                <marker date="1535119381597" expanded="true" signature="1227:1323" ph="..." />
               </folding>
             </state>
           </provider>
@@ -176,7 +176,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="235" />
     <option name="y" value="97" />
     <option name="width" value="1130" />
@@ -246,16 +246,15 @@
       <workItem from="1534969551445" duration="5445000" />
       <workItem from="1535024252164" duration="323000" />
       <workItem from="1535027003158" duration="14806000" />
-      <workItem from="1535044432229" duration="1582000" />
+      <workItem from="1535044432229" duration="1887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29881000" />
+    <option name="totallyTimeSpent" value="30186000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -774,10 +773,10 @@
     <entry file="file://$PROJECT_DIR$/admlogin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
-          <caret line="52" column="7" lean-forward="false" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
-            <marker date="1535045749185" expanded="true" signature="611:710" ph="SELECT ID_Dr... drivers" />
-            <marker date="1535045749185" expanded="true" signature="1227:1323" ph="..." />
+            <marker date="1535119381597" expanded="true" signature="611:710" ph="SELECT ID_Dr... drivers" />
+            <marker date="1535119381597" expanded="true" signature="1227:1323" ph="..." />
           </folding>
         </state>
       </provider>
