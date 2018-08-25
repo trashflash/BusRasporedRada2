@@ -28,48 +28,28 @@ include_once ('db_config.php'); ?>
 
             <label class="w3-text-teal"><b>Početno vreme</b></label>
             <input class="w3-input w3-border w3-light-grey" type="time" name="Start">
-            <label class="w3-text-teal"><b>Početno vreme</b></label>
 
             <label class="w3-text-teal"><b>Krajnje vreme</b></label>
             <input class="w3-input w3-border w3-light-grey" type="time" name="End">
-            <label class="w3-text-teal"><b>Početno vreme</b></label>
 
             <label class="w3-text-teal"><b>Ukupno vreme</b></label>
             <input class="w3-input w3-border w3-light-grey" type="time" name="Total">
-            <label class="w3-text-teal"><b>Početno vreme</b></label>
 
             <label class="w3-text-teal"><b>Tip turažne linije</b></label>
-            <select class="w3-select w3-light-gray" name="TypeT">
+            <input class="w3-input w3-border w3-light-grey" type="number" value="3" name="TypeT">
+
+            <label class="w3-text-teal"><b>Tip dana</b></label>
+            <select class="w3-select w3-light-gray" name="TypeD">
                 <option value="" disabled selected>Odaberite opciju.</option>
-                <option value="1">GRADSKI</option>
-                <option value="2">PRIGRADSKI</option>
-                <option value="3">MEĐUGRADSKI</option>
-                <option value="4">MEŠOVITO</option>
-                <option value="5">TURISTIČKI</option>
+                <option value="15">Radni dan</option>
+                <option value="6">Subota</option>
+                <option value="7">Nedelja</option>
             </select>
 
             <label class="w3-text-teal"><b>Slika</b></label>
             <input class="w3-input w3-border w3-light-grey" type="file" name="upload">
-
-            <label class="w3-text-teal"><b>Broj autobusa</b></label>
-            <select class="w3-select w3-light-gray" name="ownBus">
-                <?php
-                echo '<option value="null">Nema</option>';
-                $sql = "SELECT ID_Bus FROM buses";
-                $result= mysqli_query($connection,$sql) or die(mysqli_error($connection));
-
-                if (mysqli_num_rows($result)>0) {
-                    while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                        echo '<option value="' . $record['ID_Bus'] . '">' . $record['ID_Bus'] . '</option>';
-                    }
-                } ?>
-            </select>
-
-            <label class="w3-text-teal"><b>Digitalni tahograf</b></label>
-            <input type="radio" name="digitTach" value="1">IMA
-            <input type="radio" name="digitTach" value="0">NEMA<br/>
             <p> </p>
-            <button class="w3-btn w3-blue-grey">Dodaj vozača!</button><br/><p></p>
+            <button class="w3-btn w3-blue-grey">Dodaj turažni list!</button><br/><p></p>
         </form>
     </div>
 
@@ -92,18 +72,14 @@ include_once ('db_config.php'); ?>
 
             if (mysqli_num_rows($result)>0) {
                 while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    if ($record['Digital_Tachograph']=1) $dig='IMA'; else $dig='NEMA';
-                    if ($record['Area']=1) $area='GRADSKI SOLO'; elseif ($record['Area']=2) $area='GRADSKI ZGLOBNI';
-                    elseif ($record['Area']=3) $area='PRIGRADSKI'; elseif ($record['Area']=4) $area='MEĐUGRADSKI';
-                    elseif ($record['Area']=5) $area='GRADSKI MINIBUS'; elseif ($record['Area']=6) $area='MEĐUGRADSKI MINIBUS';
-                    else $area='TURISTIČKI';
+
 
                     echo '<tr><td>' . $record['ID_Tour'] . '</td>
                         <td><img src="' . $record['Photo_Link_Tour'] . '" style="height:50px"></td>
                         <td>' . $record['Name'] . '</td><td>' . $record['Description'] . '</td>
                         <td>' . $record['Start_Time'] . '</td><td>' . $record['End_Time'] . '</td>
                         <td>' . $record['Total_Time'] . '</td>
-                        <td>MENJAJ / <a href="EditDriver.php?driveri='.$record['ID_Tour'].'" onclick="return confirm(\'Da li ste sigurni?\');">BRIŠI</a></td></tr>';
+                        <td>MENJAJ / <a href="EditTours.php?tours='.$record['ID_Tour'].'" onclick="return confirm(\'Da li ste sigurni?\');">BRIŠI</a></td></tr>';
                 }
             }
             ?>
