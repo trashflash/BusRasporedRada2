@@ -1,6 +1,11 @@
-<table>
+
+
+
+<body>
+
+<div>
 <?php
-//include_once("sidebar.php");
+
 include_once("db_config.php");
 if((@$_GET['action'] == 'edit') && isset($_GET['id'])) {
 $datum=@$_GET['id'];
@@ -13,19 +18,23 @@ WHERE Date_Work='$datum'";
 
 
 
-               echo '<form name="'. $record['ID_Work'] .'">
-    <input type="text" name="ID_Tour" value="'. $record['ID_Tour'] .'">
-    <input type="text" name="ID_Driver" value="'. $record['ID_Driver'] .'">
-    <input type="text" name="ID_Bus1" value="'. $record['ID_Bus1'] .'">
-    <input type="text" name="Start_Time" value="'. $record['Start_Time'] .'">
-    <input type="text" name="End_Time" value="'. $record['End_Time'] .'">
-    <input type="text" name="Total_Time" value="'. $record['Total_Time'] .'">
-</form><br/w>';
-
+                echo '<form name="'. $record['ID_Work'] .'">
+   <div onchange="changeit('. $record['ID_Work'] .', \'ID_Tour\', this)"> <input type="text" name="ID_Tour" value="'. $record['ID_Tour'] .'"> </div>
+   <div onchange="changeit('. $record['ID_Work'] .', \'ID_Driver\', this)"> <input type="text" name="ID_Driver" value="'. $record['ID_Driver'] .'"> </div>
+   <div onchange="changeit('. $record['ID_Work'] .', \'ID_Bus1\', this)"> <input type="text" name="ID_Bus1" value="'. $record['ID_Bus1'] .'"> </div>
+   <div onchange="changeit('. $record['ID_Work'] .', \'Start_Time\', this)"> <input type="text" name="Start_Time" value="'. $record['Start_Time'] .'"> </div>
+   <div onchange="changeit('. $record['ID_Work'] .', \'End_Time\', this)"> <input type="text" name="End_Time" value="'. $record['End_Time'] .'"> </div>
+   <div onchange="changeit('. $record['ID_Work'] .', \'Total_Time\', this)"> <input type="text" name="Total_Time" value="'. $record['Total_Time'] .'"> </div>
+</form><br/>';
 
             }
         }
     }
 ?>
-</table>
+</div>
 
+test
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
