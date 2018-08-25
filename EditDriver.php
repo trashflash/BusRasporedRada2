@@ -1,7 +1,7 @@
 <?php
 include_once ('db_config.php');
 
-@$delid=$_GET['driveri'];
+@$delid=$_GET['drivers'];
 @$id=$_POST['driverID'];
 @$fname=$_POST['driverFName'];
 @$lname=$_POST['driverLName'];
