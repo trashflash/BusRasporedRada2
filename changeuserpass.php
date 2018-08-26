@@ -58,7 +58,7 @@ include_once ('db_config.php'); ?>
         <input class="w3-input w3-border w3-light-grey" name="pass2" type="password">
 
         <p> </p>
-        <button class="w3-btn w3-blue-grey">Dodaj autobus!</button>
+        <button class="w3-btn w3-blue-grey">Promeni lozinku!</button>
     </form>
 
     <?php

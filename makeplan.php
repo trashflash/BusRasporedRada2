@@ -1,7 +1,13 @@
 <?php
 
-include_once("sidebar.php");?>
+include_once("sidebar.php");
+if($_SESSION["ISAdmin"]!=111)
+{
+// Redirecting To Home Page
+    header("Location: login.php");
+}
 
+?>
 
 <body>
 

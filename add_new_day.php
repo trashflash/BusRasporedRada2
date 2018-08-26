@@ -1,6 +1,12 @@
 <?php
+include_once "auth.php";
 include_once "db_config.php";
 include_once "sidebar.php";
+if($_SESSION["ISAdmin"]!=111)
+{
+// Redirecting To Home Page
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

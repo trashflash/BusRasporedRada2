@@ -21,12 +21,12 @@ include_once ('db_config.php'); ?>
     <?php
     echo 'your user id is:'.@$_SESSION['UserID'];
     if(isset($_SESSION['ISAdmin'])){
-if(!($_SESSION['ISAdmin']==100)){
-    echo' <form class="w3-container">
+if(($_SESSION['ISAdmin']==111)){
+    echo' <form class="w3-container"  action="" method="post">
         
 
-        <label class="w3-text-teal"><b>Promena lozinke:</b></label>
-        <input class="w3-input w3-border w3-light-grey" name="userpw" type="hidden" value="'.@$_SESSION['UserID'].'">
+        <label class="w3-text-teal"><b>Promena lozinke admin:</b></label>
+        <input class="w3-input w3-border w3-light-grey" name="auserpw" type="hidden" value="'.@$_SESSION['username'].'">
         </select>
 
         <label class="w3-text-teal"><b>Nova Lozinka</b></label>
@@ -38,7 +38,7 @@ if(!($_SESSION['ISAdmin']==100)){
         <p> </p>
         <button class="w3-btn w3-blue-grey">Dodaj autobus!</button>
     </form>';}}else{
-    echo' <form class="w3-container">
+    echo' <form class="w3-container" action="" method="post">
         
 
         <label class="w3-text-teal"><b>Promena lozinke:</b></label>
@@ -79,13 +79,13 @@ if(!($_SESSION['ISAdmin']==100)){
 
     if (@isset($_REQUEST['apass1'])) {
         $auserpw = stripslashes($_REQUEST['auserpw']);
-        $auserpw = mysqli_real_escape_string($connection, $userpw);
+        $auserpw = mysqli_real_escape_string($connection, $auserpw);
         $apass1 = stripslashes($_REQUEST['apass1']);
         $apass1 = mysqli_real_escape_string($connection, $apass1);
         $apass2 = stripslashes($_REQUEST['apass2']);
         $apass2 = mysqli_real_escape_string($connection, $apass2);
         if ($apass1 == $apass2)
-            $query = "UPDATE `admins` SET Password='".md5($apass2)."' where ID_Admin=$auserpw";
+            $query = "UPDATE `admins` SET Password='".md5($apass2)."' where Username='$auserpw'";
         @$result = mysqli_query($connection, $query);
         if (@$result) {
             echo "<div class='form'>
