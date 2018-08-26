@@ -1,7 +1,7 @@
 <?php
 include_once ('db_config.php'); ?>
 
-// Ova stranica je završena i nema potrebe dalje je menjati.
+<!-- Ova stranica je završena i nema potrebe dalje je menjati.-->
 
 <html>
 <head>

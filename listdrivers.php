@@ -13,7 +13,6 @@ include_once ('db_config.php');
 <div style="margin-left:200px">
     <div class="w3-container w3-teal" onclick="hideit('adddriver');">
         <h3>Dodaj vozača</h3>
-        <button class="w3-btn w3-blue-grey" style="float: right" value="_" onclick="hideit('adddriver');">
     </div>
     <div id="adddriver" style="display: none;">
         <form class="w3-container" method="post" action="EditDriver.php" >
@@ -64,8 +63,8 @@ include_once ('db_config.php');
         </form>
     </div>
 
-    <div class="w3-container w3-teal" onclick="hideit('ddrivers');"> <h4>Vozači</h4> </div>
-    <div id="ddrivers">
+    <div class="w3-container w3-teal" onclick="hideit('driverss');"> <h4>Vozači</h4> </div>
+    <div id="driverss">
     <table class="w3-table-all">
         <tr>
             <th>BROJ</th>
