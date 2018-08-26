@@ -7,7 +7,8 @@
 
 <div class="w3-sidebar w3-light-blue w3-bar-block" style="width:200px">
     <h3 class="w3-bar-item">Meni</h3>
-    <a href="logout.php" class="w3-bar-item w3-button w3-blue-gray">Log out</a>
+    <!-- <a href="logout.php" class="w3-bar-item w3-button w3-blue-gray">Log out</a> -->
+    <?php include ("auth.php"); ?>
     <h6 class="w3-bar-item w3-blue">Korisnički deo</h6>
     <a href="myplan.php" class="w3-bar-item w3-button">Moj profil</a>
     <a href="changepassword.php" class="w3-bar-item w3-button">Promena lozinke</a>
