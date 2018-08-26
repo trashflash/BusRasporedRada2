@@ -21,7 +21,7 @@ if (isset($_POST['username'])){
     $password = stripslashes($_REQUEST['password']);
     $password = mysqli_real_escape_string($con,$password);
     //Checking is user existing in the database or not
-    $query = "SELECT username, password FROM `admin` WHERE username='$username'
+    $query = "SELECT username, password FROM `admins` WHERE username='$username'
 and password='".md5($password)."'";
     $result = mysqli_query($connection,$query) or die(mysqli_error());
     $rows = mysqli_num_rows($result);
@@ -29,9 +29,9 @@ and password='".md5($password)."'";
         @session_start();
         $_SESSION['username'] = $username;
         while($row = $result->fetch_assoc()) {
-            $userid = $row[`drivers` . ID_Driver];
-            $_SESSION['UserID'] = $row['username'];
-            $_SESSION['ISAdmin'] = 1;
+            $userid = $row[`admins` . ID_Admin];
+            $_SESSION['UserID'] = $row['ID_Admin'];
+            $_SESSION['ISAdmin'] = 111;
 
         }
         // Redirect user to index.php

@@ -1,7 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 8/21/2018
- * Time: 00:03
- */
+include('sidebar.php');
+
+?><div style="padding-left:205px">
+
+    <?php var_dump($_SESSION);?>
+</div>
