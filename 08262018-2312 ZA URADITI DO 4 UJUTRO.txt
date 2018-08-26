@@ -15,3 +15,6 @@
 - Dodati dummy podatke za vozace i autobuse
 - Dodati turažne listove
 
+
+Trebali bi i za dokumentaciju nameniti barem sat vremena.
+
