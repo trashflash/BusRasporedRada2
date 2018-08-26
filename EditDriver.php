@@ -24,47 +24,45 @@ if(isset($_REQUEST['driverID'])) {
 
     $own = stripslashes($_REQUEST['ownBus']);
     $own = mysqli_real_escape_string($connection, $own);
-
+}
     @$upload = $_POST['uploadedimage'];
+function GetImageExtension($imagetype)
+{
+    if (empty($imagetype)) return false;
 
-    if (isset($_POST['uploadedimage'])) {
-        function GetImageExtension($imagetype)
-        {
-            if (empty($imagetype)) return false;
+    switch ($imagetype) {
 
-            switch ($imagetype) {
-
-                case 'image/bmp':
-                    return '.bmp';
-                case 'image/gif':
-                    return '.gif';
-                case 'image/jpeg':
-                    return '.jpg';
-                case 'image/png':
-                    return '.png';
-                default:
-                    return false;
-            }
-        }
-
-
-        if (!empty($_FILES["uploadedimage"]["name"])) {
-
-            $file_name = $_FILES["uploadedimage"]["name"];
-            $temp_name = $_FILES["uploadedimage"]["tmp_name"];
-            $imgtype = $_FILES["uploadedimage"]["type"];
-            $ext = GetImageExtension($imgtype);
-            $imagename = $id . "-" . date("d-m-Y") . "-" . time() . $ext;
-            $target_path = "images/driver/" . $imagename;
-
-        }
-        if (move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $target_path)) {
-            echo "The file " . basename($_FILES["uploadedimage"]["name"]) . " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
+        case 'image/bmp':
+            return '.bmp';
+        case 'image/gif':
+            return '.gif';
+        case 'image/jpeg':
+            return '.jpg';
+        case 'image/png':
+            return '.png';
+        default:
+            return false;
     }
 }
+
+
+if (!empty($_FILES["uploadedimage"]["name"])) {
+
+    $file_name = $_FILES["uploadedimage"]["name"];
+    $temp_name = $_FILES["uploadedimage"]["tmp_name"];
+    $imgtype = $_FILES["uploadedimage"]["type"];
+    $ext = GetImageExtension($imgtype);
+    $imagename = $id."-" .date("d-m-Y") . "-" . time() . $ext;
+    $target_path = "images/driver/".$imagename;
+
+}
+if (move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $target_path)) {
+    echo "The file " . basename($_FILES["uploadedimage"]["name"]) . " has been uploaded.";
+} else {
+    echo "Sorry, there was an error uploading your file.";
+}
+
+
 if (isset($delid)){
     $sql = "DELETE FROM drivers WHERE ID_Driver=$delid";
 
@@ -94,4 +92,10 @@ else {
             VALUES ($id,'$fname','$lname','".md5($pass)."',$digit,'$area',$own,'$target_path')";
     $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 }}
-?>
+function goback()
+{
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit;
+}
+
+goback();?>

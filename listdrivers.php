@@ -15,7 +15,7 @@ include_once ('db_config.php');
         <h3>Dodaj vozača</h3>
     </div>
     <div id="adddriver" style="display: none;">
-        <form class="w3-container" method="post" action="EditDriver.php" >
+        <form class="w3-container" method="post" enctype="multipart/form-data" action="EditDriver.php" >
             <label class="w3-text-teal"><b>Službeni broj:</b></label>
             <input class="w3-input w3-border w3-light-grey" type="text" name="driverID">
 
@@ -39,7 +39,7 @@ include_once ('db_config.php');
             </select>
 
             <label class="w3-text-teal"><b>Slika</b></label>
-            <input class="w3-input w3-border w3-light-grey" type="file" name="upload">
+            <input class="w3-input w3-border w3-light-grey" type="file" name="uploadedimage">
 
             <label class="w3-text-teal"><b>Broj autobusa</b></label>
             <select class="w3-select w3-light-gray" name="ownBus">

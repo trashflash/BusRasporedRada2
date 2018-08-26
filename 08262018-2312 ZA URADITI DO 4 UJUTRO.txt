@@ -1,0 +1,17 @@
+ŠTA TREBA U NAREDNA 5 SATA ZAVRŠITI:
+
+- NEŠTO BILO ŠTA SA AJAXOM ILI JSONOM!
+
+
+- myplan.php, dodati sliku vozaca, naziv, svoj bus i tako to u jedan w3-card.
+- index.php, dodati link za današnji i sutrašnji raspored (sa get...), urediti još sa welcome porukom.
+- svaka stranica da redirectuje na login.php ako nije logged in.
+- stranice koje su administrativne da redirectuju na "no access".
+- makeplan.php srediti velicinu inputova.
+- absences.php pretragu srediti, error prepraviti.
+- addnewday.php urediti.
+
+
+- Dodati dummy podatke za vozace i autobuse
+- Dodati turažne listove
+

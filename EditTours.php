@@ -36,7 +36,7 @@ if (isset($_REQUEST['tourID']) ) {
 
 @$upload=$_POST['uploadedimage'];
 
-if(isset($_POST['uploadedimage'])) {
+
     function GetImageExtension($imagetype)
     {
         if (empty($imagetype)) return false;
@@ -45,6 +45,8 @@ if(isset($_POST['uploadedimage'])) {
 
             case 'image/bmp':
                 return '.bmp';
+            case 'text/pdf':
+                return '.pdf';
             case 'image/gif':
                 return '.gif';
             case 'image/jpeg':
@@ -64,15 +66,17 @@ if(isset($_POST['uploadedimage'])) {
         $imgtype = $_FILES["uploadedimage"]["type"];
         $ext = GetImageExtension($imgtype);
         $imagename = $id . "-" . date("d-m-Y") . "-" . time() . $ext;
-        $target_path = "images/tl/" . $imagename;
+        $target_path = "images/tl/".$imagename;
 
     }
-    if (move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $target_path)) {
-        echo "The file " . basename($_FILES["uploadedimage"]["name"]) . " has been uploaded.";
+    if (move_uploaded_file(@$_FILES["uploadedimage"]["tmp_name"], @$target_path)) {
+        echo "The file " . basename(@$_FILES["uploadedimage"]["name"]) . " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
-}
+
+
+
 if (isset($delid)){
     $sql = "DELETE FROM tours WHERE ID_Tour=$delid";
 
