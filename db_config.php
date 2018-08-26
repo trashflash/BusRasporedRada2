@@ -21,8 +21,6 @@ mysqli_query($connection,"SET CHARACTER SET utf8") or die (mysqli_error($connect
 mysqli_query($connection,"SET COLLATION_CONNECTION='utf8_general_ci'") or die (mysqli_error($connection));
 
 ?>
-
-<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
 </head>

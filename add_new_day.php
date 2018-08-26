@@ -1,5 +1,6 @@
 <?php
 include_once "db_config.php";
+include_once "sidebar.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +9,46 @@ include_once "db_config.php";
     <title>Dodaj</title>
 </head>
 <body>
+<div style="padding-left: 205px">
+<?php
+if((isset($_GET['tour'])) && (isset($_GET['date']))) {
+
+    $idtourquery=$_GET['tour'];
+    $datequery=$_GET['date'];
+    $query = "INSERT INTO workplan(ID_Tour,Date_Work,Start_Time,End_Time,Total_Time) SELECT ID_Tour, '$datequery', Start_Time, End_Time, Total_Time FROM tours 
+WHERE ID_Tour=$idtourquery";
+    $result = mysqli_query($con,$query);
+    if($result){
+        echo "success1";
+    }
+}
+if((@$_GET['action'] == 'add') && (isset($_GET['date']))) {
+    $datenew=$_GET['date'];
+    echo 'Datum kojem se dodaje turažni list:'.$datenew;
+    echo ' <form class="w3-container" method="get" action="">
+    <label class="w3-text-teal"><b>Odaberite turažni list koji želite dodati:</b></label>
+    <input type="hidden" name="action" value="add"/>
+        <input type="hidden" name="addtl" value="yes"/>
+        <input type="hidden" name="date" value="'.$datenew.'"/>
+        <select class="w3-select w3-border w3-light-gray" name="tour">
+            <option value="" disabled selected>Odaberite opciju.</option>';
+    $sqldate = "SELECT * from tours ORDER BY `Name` DESC";
+    $result = mysqli_query($con, $sqldate);
+    if (mysqli_num_rows($result) > 0) {
+        while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            echo '      <option value="' . $record['ID_Tour'] . '">' . $record['Name'] . ' Opis:' . $record['Description'] . ' Dan:' . $record['Type_Day'] . '</option>';
+        }
+        echo '
+        </select>
+        <input type="submit" value="submit"/>
+        </form>
+        ';
+
+    }
+}
+else{
+
+echo'
 
 <form method="post" action="">
     <input type="date" name="datum"/>
@@ -40,9 +81,7 @@ include_once "db_config.php";
 </form>
 --------
 
-
-
-<?php
+';
 
 @$date=@$_REQUEST['datum'];
 @$selectday=@$_REQUEST['selectday'];
@@ -145,8 +184,9 @@ if(isset($_REQUEST['dateto'])){
 if($nosuccess==99){
    echo "nije success kopiranje datuma";
 }}}
+}
 
-var_dump($datefrom, $dateto, $result);
 ?>
+</div>
 </body>
 </html>

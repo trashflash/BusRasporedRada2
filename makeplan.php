@@ -35,7 +35,7 @@ if((@$_GET['action'] == 'edit') && isset($_GET['date'])) {
 $datum=@$_GET['date'];
  echo'<label class="w3-text-teal"><b>Uređivanje plana za datum: '.$datum.'</b></label><br/>
 
-<a href="add_new_day.php">Kliknite ovde za dodavanje vanrednih turažnih listova za ovaj dan.</a>';
+<a href="add_new_day.php?action=add&date='.$datum.'">Kliknite ovde za dodavanje vanrednih turažnih listova za ovaj dan.</a>';
 
     echo'<div class="w3-container w3-teal">
         <h2>Dodaj naređenja</h2>
@@ -109,7 +109,10 @@ FROM workplan JOIN tours ON workplan.ID_Tour = tours.ID_Tour WHERE Date_Work='$d
 }
 ?>
 </div>
-
+<?php
+//djf  cnnnnn jv fn hyuubc  mnfhjbstjerxvbgxs
+//mačak što je šetao po tastaturi
+?>
 test
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="js/scripts.js"></script>

@@ -67,8 +67,8 @@ if(!($_SESSION['ISAdmin']==100)){
         $pass2 = mysqli_real_escape_string($connection, $pass2);
         if ($pass1 == $pass2)
             $query = "UPDATE `drivers` SET Password='".md5($pass2)."' where ID_Driver=$userpw";
-        $result = mysqli_query($connection, $query);
-        if ($result) {
+        @$result = mysqli_query($connection, $query);
+        if (@$result) {
             echo "<div class='form'>
         <h3>Vaša lozinka je uspešno izmenjena!</h3>
         </div>";
@@ -86,8 +86,8 @@ if(!($_SESSION['ISAdmin']==100)){
         $apass2 = mysqli_real_escape_string($connection, $apass2);
         if ($apass1 == $apass2)
             $query = "UPDATE `admins` SET Password='".md5($apass2)."' where ID_Admin=$auserpw";
-        $result = mysqli_query($connection, $query);
-        if ($result) {
+        @$result = mysqli_query($connection, $query);
+        if (@$result) {
             echo "<div class='form'>
         <h3>Vaša lozinka je uspešno izmenjena!</h3>
         </div>";
