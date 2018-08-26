@@ -8,12 +8,3 @@ function hideit(id){
         el.style.display='none';
 }
 
-
-    var start = document.getElementsByName(Start);
-    var end = document.getElementsByName(End);
-    var total = end - start;
-    var value = document.getElementsByName(Total)
-
-    end.addEventListener("input", function() {
-        value.innerText = total.value;
-    }, false);

@@ -83,11 +83,11 @@ VALUES ('$adriver', '$aoddate', '$adodate', '$areason')";
 
     <form name="registration" action="" method="post">
         <input type="text" name="DRNUM" placeholder="Službeni broj" style="width:500px;" />
-        <select class="w3-select w3-light-gray" name="option">
+        <select class="w3-select w3-light-gray" name="optiones">
             <option value="" disabled selected>Odaberite opciju.</option>
-            <option value="BOLOVANJE">GRADSKI SOLO</option>
-            <option value="GODIŠNJI ODMOR">GRADSKI ZGLOBNI</option>
-            <option value="DRUGO">PRIGRADSKI</option>
+            <option value="BOLOVANJE">BOLOVANJE</option>
+            <option value="GODIŠNJI ODMOR">GODIŠNJI ODMOR</option>
+            <option value="DRUGO">DRUGO</option>
         </select>
         <input type="submit" name="submit" value="Pretraži odsustva!" />
     </form>
@@ -104,10 +104,10 @@ VALUES ('$adriver', '$aoddate', '$adodate', '$areason')";
             <th>IZMENE</th>
         </tr>
         <?php
-        if (isset($_REQUEST['DRNUM'])) {
+        if (@$_REQUEST['DRNUM']!=null) {
             $drsearch=@$_REQUEST['DRNUM'];
-            $optionsearch=@$_REQUEST['option'];
-            $sql = "SELECT * FROM absences JOIN drivers where absences.ID_Driver = drivers.ID_Driver and (absences.ID_Driver=$drsearch) or (absences.Reason='$optionsearch')";
+            $optionessearch=@$_REQUEST['optiones'];
+            $sql = "SELECT * FROM absences JOIN drivers where absences.ID_Driver = drivers.ID_Driver and absences.ID_Driver=$drsearch";
             $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 
             if (mysqli_num_rows($result) > 0) {
@@ -117,7 +117,18 @@ VALUES ('$adriver', '$aoddate', '$adodate', '$areason')";
             <td>Edit, Delete</td></tr>';
                 }
             }
+        }else if (@$_REQUEST['optiones']!=null) {
+            $optionessearch=@$_REQUEST['optiones'];
+            $sql = "SELECT * FROM absences JOIN drivers where absences.ID_Driver = drivers.ID_Driver and absences.Reason='$optionessearch'";
+            $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 
+            if (mysqli_num_rows($result) > 0) {
+                while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo '<tr><td>' . $record['ID_Driver'] . '</td><td>' . $record['First_Name'] . '</td>
+            <td>' . $record['Last_Name'] . '</td><td>' . $record['FromDate'] . '</td><td>' . $record['ToDate'] . '</td><td>' . $record['Reason'] . '</td>
+            <td>Edit, Delete</td></tr>';
+                }
+            }
         } else {
             $sql = "SELECT * FROM absences JOIN drivers where absences.ID_Driver = drivers.ID_Driver and absences.ToDate>now()";
             $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
