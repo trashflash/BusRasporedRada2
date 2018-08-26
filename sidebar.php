@@ -1,9 +1,7 @@
 <head>
     <link rel="stylesheet" href="w3css.css">
+    <meta charset="utf-8">
 </head>
-
-// Potrebne izmene: Autentifikacij za administrativni deo!
-
 
 <div class="w3-sidebar w3-light-blue w3-bar-block" style="width:200px">
     <h3 class="w3-bar-item">Meni</h3>
@@ -21,7 +19,5 @@
     <a href="listtour.php" class="w3-bar-item w3-button">Turažni listovi</a>
     <a href="absences.php" class="w3-bar-item w3-button">Odsustva</a>
     <a href="changeuserpass.php" class="w3-bar-item w3-button">Promena lozinke vozača</a>
-
-
 
 </div>

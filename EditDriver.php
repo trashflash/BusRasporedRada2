@@ -31,7 +31,7 @@ if (mysqli_num_rows($result)>0) {
     }
 }
 if(isset($iddrv)){
-    $sql = "UPDATE drivers SET ID_Driver=$iddrv,First_Name='$fname',Last_Name='$lname',Password='$pass',Digital_Tachograph=$digit,Area='$area',Bus_Own=$own,Photo_Link_Driver='$upload'
+    $sql = "UPDATE drivers SET ID_Driver=$iddrv,First_Name='$fname',Last_Name='$lname',Password='".md5($pass)."',Digital_Tachograph=$digit,Area='$area',Bus_Own=$own,Photo_Link_Driver='$upload'
             WHERE ID_Driver=$iddrv";
     $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 }
