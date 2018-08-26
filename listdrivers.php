@@ -89,7 +89,7 @@ include_once ('db_config.php');
                 elseif ($record['Area']=3) $area='PRIGRADSKI'; elseif ($record['Area']=4) $area='MEĐUGRADSKI';
                 elseif ($record['Area']=5) $area='GRADSKI MINIBUS'; elseif ($record['Area']=6) $area='MEĐUGRADSKI MINIBUS';
                 else $area='TURISTIČKI';
-                $sqll = "SELECT count(distinct w.Date_Work) as datte,sum(w.Total_Time) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=" . $record['ID_Driver'] . "";
+                $sqll = "SELECT count(distinct w.Date_Work) as datte,SEC_TO_TIME(sum(w.Total_Time)) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=" . $record['ID_Driver'] . "";
                 $resultl= mysqli_query($connection,$sqll) or die(mysqli_error($connection));
                 if (mysqli_num_rows($resultl)>0) {
                             while ($recordl = mysqli_fetch_array($resultl, MYSQLI_ASSOC)) {

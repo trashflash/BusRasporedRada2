@@ -1,0 +1,27 @@
+Stvari za uraditi u narednih 24 sati:
+
+SUPER HITNO:  <!!!> <!!!>
+- Implementacija AJAXa i JSONa. Potrebno da bi projekat bio ispravan.
+
+HITNO:  < ! >
+- Izgled i funkcionalnost stranice dnevni plan.
+- Funkcionalnost Log-In/Log-Out.
+- Funkcionalnost menija (auth/admin), i stranica sa auth.
+- Index.php stranica, sa log-in, u suprotnom nešto drugo.
+
+BITNO:
+- Autobusi, Vozaci, Turažni listovi ONCLICK da se poveca slika!
+- Notifikacije ako je neki vozac na duže od 9 sati rada stavljen tog dana u makeplan, ili na dva mesta u isto vreme.
+
+MANJE BITNO:
+- Dodavanje vanrednih turažnih listova.
+- Kombinacija stranica makeplan i addnewday ili barem normalan izgled obe.
+- Promena sopstvene lozinke.
+
+NEBITNO:
+- Personalizacija stranice moj profil.
+- Pretraga Autobusa, Vozaca, Turažnih listova.
+
+STVARI ZA URADITI U PONEDELJAK NAKON USTAJANJA:
+
+- Dokumentacija

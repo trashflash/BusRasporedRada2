@@ -79,6 +79,11 @@ WHERE Type_Tour=$selecttour and Type_Day=$selectday";
     if($result){
         echo "success1";
     }
+        $query = "INSERT INTO orders(OrderDate, OrderText, OrderImportance) VALUES '$date', '0', 0";
+        $result = mysqli_query($con,$query);
+        if($result){
+            echo "success1";
+        }
     }
 
 ?>
@@ -122,6 +127,11 @@ WHERE Date_Work='$datefrom'";
             while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
                 $nosuccess=64;
+            }
+            $query = "INSERT INTO orders(OrderDate, OrderText, OrderImportance) VALUES '$date', '0', 0";
+            $result2 = mysqli_query($con,$query);
+            if($result2){
+                echo "success1";
             }
         }
         else {

@@ -5,7 +5,9 @@ include_once("sidebar.php");?>
 
 <body>
 
+
 <div style="padding-left: 205px;">
+
 <?php
 
 include_once("db_config.php");
@@ -34,6 +36,30 @@ $datum=@$_GET['date'];
  echo'<label class="w3-text-teal"><b>Uređivanje plana za datum: '.$datum.'</b></label><br/>
 
 <a href="add_new_day.php">Kliknite ovde za dodavanje vanrednih turažnih listova za ovaj dan.</a>';
+
+    echo'<div class="w3-container w3-teal">
+        <h2>Dodaj naređenja</h2>
+    </div>
+
+    <form class="w3-container" method="" action="">
+        <label class="w3-text-teal"><b>Naređenja:</b></label>';
+
+
+$sql = "SELECT * FROM orders WHERE OrderDate='$datum'";
+
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+echo'
+         
+        <input class="w3-input w3-border w3-light-blue" type="textarea" name="OrderText" onchange="izmena(' . $record['OrderID'] . ', \'OrderText\', this)" value="' . $record['OrderText'] . '">
+
+   </form> '.$record['OrderDate'].' ';
+        }
+}
+        
+
         $sql = "SELECT DISTINCT ID_Work, workplan.ID_Tour, `Name`, `ID_Driver`, ID_Bus1, Date_Work, 
 workplan.Start_Time, workplan.End_Time, workplan.Total_Time 
 FROM workplan JOIN tours ON workplan.ID_Tour = tours.ID_Tour WHERE Date_Work='$datum' ORDER BY `Name` ASC";
