@@ -1,5 +1,5 @@
 function changeit(id, field, element){
-  var newVal = $(element).find('input').val();
+  var newVal = $(element).val();
   $.post("getter.php",{
     "id": id,
     "field": field,
