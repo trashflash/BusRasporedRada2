@@ -8,7 +8,7 @@
 <div class="w3-sidebar w3-light-blue w3-bar-block" style="width:200px">
     <h3 class="w3-bar-item">Meni</h3>
     <!-- <a href="logout.php" class="w3-bar-item w3-button w3-blue-gray">Log out</a> -->
-    <?php if(isset($_SESSION["username"])){?>
+    <?php if(!isset($_SESSION["username"])){?>
         <a href="login.php" class="w3-bar-item w3-button w3-blue-gray">Log in</a>
         <?php ;} else { ?>
         <a href="logout.php" class="w3-bar-item w3-button w3-blue-gray">Log out</a>
@@ -18,7 +18,7 @@
     <a href="changepassword.php" class="w3-bar-item w3-button">Promena lozinke</a>
     <a href="dailyplan.php" class="w3-bar-item w3-button">Dnevni plan</a>
 
-    <?php if(isset($_SESSION["isAdmin"])){?>
+    <?php if(isset($_SESSION["ISAdmin"])){?>
         <h6 class="w3-bar-item w3-blue">Administrativni deo</h6>
         <a href="makeplan.php" class="w3-bar-item w3-button">Napravi dnevni plan</a>
         <a href="listbuses.php" class="w3-bar-item w3-button">Autobusi</a>

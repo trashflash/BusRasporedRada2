@@ -50,11 +50,8 @@ and password='".md5($password)."'";
             <input  class="w3-input w3-border w3-hover-light-gray" type="password" name="password" placeholder="Lozinka" required />
             <input name="submit" type="submit" class="w3-button w3-light-blue" style="width:fit-content" value="Prijava" />
         </form>
-
     </div>
 <?php }  ?>
-
-
 
 
 

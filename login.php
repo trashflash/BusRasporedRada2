@@ -49,9 +49,10 @@ and password='".md5($password)."'";
             <input  class="w3-input w3-border w3-hover-light-gray" type="password" name="password" placeholder="Lozinka" required />
             <input name="submit" type="submit" class="w3-button w3-light-blue" style="width:fit-content" value="Prijava" />
         </form>
-        <p>Niste registrovani? <a href='registration.php'>Registrujte se ovde!</a></p>
+        <span><a href="admlogin.php">mislis da si admin?</a></span>
     </div>
 <?php }  ?>
+
 
 
 
