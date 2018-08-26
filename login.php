@@ -37,8 +37,8 @@ and password='".md5($password)."'";
         header("Location: index.php");
     }else{
         echo "<div class='form'>
-<h3>Username/password is incorrect.</h3>
-<br/>Click here to <a href='login.php'>Login</a></div>";
+<h3>Korisničko ime ili lozinka su netačni..</h3>
+<br/>Kliknite ovde za ponovni pokušaj <a href='login.php'>Prijave</a></div>";
     }
 }else{
     ?>
@@ -49,7 +49,7 @@ and password='".md5($password)."'";
             <input  class="w3-input w3-border w3-hover-light-gray" type="password" name="password" placeholder="Lozinka" required />
             <input name="submit" type="submit" class="w3-button w3-light-blue" style="width:fit-content" value="Prijava" />
         </form>
-        <span><a href="admlogin.php">mislis da si admin?</a></span>
+        <span><a href="admlogin.php">Prijava za administratora</a></span>
     </div>
 <?php }  ?>
 

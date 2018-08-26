@@ -1,5 +1,6 @@
 <?php
 include_once ('db_config.php');
+@$delbus=$_GET['delbus'];
 
 @$delid=$_GET['drivers'];
 if(isset($_REQUEST['driverID'])) {
@@ -65,6 +66,10 @@ if (move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $target_path)) {
 
 if (isset($delid)){
     $sql = "DELETE FROM drivers WHERE ID_Driver=$delid";
+
+    if (isset($delbus)) {
+        $sql = "DELETE FROM buses WHERE ID_Bus=$delbus";
+    }
 
 if (mysqli_query($connection, $sql)) {
     echo "Record deleted successfully";

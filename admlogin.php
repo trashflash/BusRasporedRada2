@@ -38,18 +38,22 @@ and password='".md5($password)."'";
         header("Location: index.php");
     }else{
         echo "<div class='form'>
-<h3>Username/password is incorrect.</h3>
-<br/>Click here to <a href='login.php'>Login</a></div>";
+<h3>Neispravno korisničko ime ili lozinka.</h3>
+<br/>Kliknite ovde za povratak na <a href='login.php'>Prijavljivanje za korisnike</a> ili <a href='admlogin.php'>administratore</a></div>";
     }
 }else{
     ?>
     <div class="form" style="padding-left:300px; padding-right:300px">
         <h1>Prijava</h1>
         <form action="" method="post" name="login">
+            <div class="w3-twothird">
             <input  class="w3-input w3-border w3-hover-light-gray" type="text" name="username" placeholder="Korisničko ime" required />
             <input  class="w3-input w3-border w3-hover-light-gray" type="password" name="password" placeholder="Lozinka" required />
-            <input name="submit" type="submit" class="w3-button w3-light-blue" style="width:fit-content" value="Prijava" />
+        </div><div class="w3-third">
+            <input name="submit" type="submit" class="w3-button w3-light-blue" style="width:fit-content" value="Prijava" /></div>
         </form>
+        <br/>Povratak na <a href='login.php'>Prijavljivanje za korisnike</a></div>
+
     </div>
 <?php }  ?>
 

@@ -7,6 +7,7 @@ include_once "sidebar.php";
 <head>
     <meta charset="UTF-8">
     <title>Dodaj</title>
+    <link rel="stylesheet" href="w3css.css">
 </head>
 <body>
 <div style="padding-left: 205px">
@@ -28,8 +29,13 @@ if((@$_GET['action'] == 'add') && (isset($_GET['date']))) {
     echo ' <form class="w3-container" method="get" action="">
     <label class="w3-text-teal"><b>Odaberite turažni list koji želite dodati:</b></label>
     <input type="hidden" name="action" value="add"/>
-        <input type="hidden" name="addtl" value="yes"/>
-        <input type="hidden" name="date" value="'.$datenew.'"/>
+    
+   <div class="w3-row-padding">
+  
+        <input type="hidden" class="w3-input w3-border" name="addtl" value="yes"/>
+        
+        <input type="hidden" class="w3-input w3-border" name="date" value="'.$datenew.'"/>
+        <div class="w3-twothird">
         <select class="w3-select w3-border w3-light-gray" name="tour">
             <option value="" disabled selected>Odaberite opciju.</option>';
     $sqldate = "SELECT * from tours ORDER BY `Name` DESC";
@@ -39,8 +45,8 @@ if((@$_GET['action'] == 'add') && (isset($_GET['date']))) {
             echo '      <option value="' . $record['ID_Tour'] . '">' . $record['Name'] . ' Opis:' . $record['Description'] . ' Dan:' . $record['Type_Day'] . '</option>';
         }
         echo '
-        </select>
-        <input type="submit" value="submit"/>
+        </select></div>
+        <div class="w3-third"><input type="submit" class="w3-button w3-border-blue w3-cyan"value="Dodaj"/></div></div>
         </form>
         ';
 
@@ -51,35 +57,39 @@ else{
 echo'
 
 <form method="post" action="">
-    <input type="date" name="datum"/>
+
+<div class="w3-quarter">Datum</div><div class="w3-quarter">Tip Dana</div>
+<div class="w3-quarter">Tip Turažnih listova</div>
+<div class="w3-quarter">.</div>
+
+    <input class="w3-input w3-quarter w3-border" type="date" name="datum"/>
     <div>
-        <select name="selectday">
+        <select class="w3-input w3-quarter w3-border" name="selectday">
             <option value="15">Radni dan</option>
             <option value="6">Subota</option>
             <option value="7">Nedelja</option>
         </select>
     </div>
     <div>
-        <select name="selecttour">
+        <select class="w3-input w3-quarter w3-border" name="selecttour">
             <option value="1">Radni dan - Obično</option>
             <option value="2">Radni dan - B turažni</option>
             <option value="3">Radni dan - C turažni</option>
             <option value="4">Subota</option>
             <option value="5">Nedelja</option>
         </select>
-        <input type="submit" value="submit"/>
+        <input class="w3-button w3-cyan w3-quarter w3-border" type="submit" value="Dodaj"/>
     </div>
 </form>
----------
-
+<p></p><br/>
+<div class="w3-third">Datum koji se pravi</div><div class="w3-third">Datum koji se kopira</div>
+<div class="w3-third">.</div>
 <form method="post" action="">
-    DATE TO:
-    <input type="date" name="dateto" />
-    DATE FROM:
-    <input type="date" name="datefrom" />
-        <input type="submit" value="submit"/>
+    <input class="w3-input w3-third w3-border" type="date" name="dateto" />
+    <input class="w3-input w3-third w3-border" type="date" name="datefrom" />
+        <input class="w3-button w3-aqua w3-third w3-border" type="submit" value="Prekopiraj"/>
 </form>
---------
+
 
 ';
 

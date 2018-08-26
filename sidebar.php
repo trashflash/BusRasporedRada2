@@ -20,7 +20,8 @@
 
     <?php if(isset($_SESSION["ISAdmin"])){?>
         <h6 class="w3-bar-item w3-blue">Administrativni deo</h6>
-        <a href="makeplan.php" class="w3-bar-item w3-button">Napravi dnevni plan</a>
+        <a href="add_new_day.php" class="w3-bar-item w3-button">Napravi dnevni plan</a>
+        <a href="makeplan.php" class="w3-bar-item w3-button">Uredi dnevni plan</a>
         <a href="listbuses.php" class="w3-bar-item w3-button">Autobusi</a>
         <a href="listdrivers.php" class="w3-bar-item w3-button">Vozači</a>
         <a href="listtour.php" class="w3-bar-item w3-button">Turažni listovi</a>
