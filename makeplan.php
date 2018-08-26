@@ -69,11 +69,10 @@ FROM workplan JOIN tours ON workplan.ID_Tour = tours.ID_Tour WHERE Date_Work='$d
             while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
 
-                echo '<form name="' . $record['ID_Work'] . '">
-    <input type="text" name="Name" disabled="disabled" onchange="changeit(' . $record['ID_Work'] . ', \'Name\', this)" value="' . $record['Name'] . '">
-    ';
+                echo '<p></p><form name="' . $record['ID_Work'] . '">
+    <input class="w3-input w3-border" style="margin-right:5px; width: 16%; display: inline" type="text" name="Name" disabled="disabled" onchange="changeit(' . $record['ID_Work'] . ', \'Name\', this)" value="' . $record['Name'] . '">';
 
-                echo '<select name="ID_Driver" onchange="changeit(' . $record['ID_Work'] . ', \'ID_Driver\', this)" >
+                echo '<select class="w3-select w3-border" style="width: 16%" name="ID_Driver" onchange="changeit(' . $record['ID_Work'] . ', \'ID_Driver\', this)" >
                 <option value="' . $record['ID_Driver'] . '">' . $record['ID_Driver'] . '</option>';
                 $sql23="SELECT ID_Driver, First_Name, Last_Name from drivers;";
                 $result23 = mysqli_query($con,$sql23);
@@ -82,11 +81,9 @@ FROM workplan JOIN tours ON workplan.ID_Tour = tours.ID_Tour WHERE Date_Work='$d
                         echo ' <option value="' . $record23['ID_Driver'] . '">' . $record23['ID_Driver'] .' - '.  $record23['First_Name'] .' ' .  $record23['Last_Name'] . '</option>';
                     }
                 }
-                echo '
-    </select>
-                
-                
-                <select name="ID_Bus1" onchange="changeit(' . $record['ID_Work'] . ', \'ID_Bus1\', this)" >
+                echo '</select>
+
+                <select class="w3-select w3-border" style="width: 16%" name="ID_Bus1" onchange="changeit(' . $record['ID_Work'] . ', \'ID_Bus1\', this)" >
                 <option value="' . $record['ID_Bus1'] . '">' . $record['ID_Bus1'] . '</option>';
                 $sql22="SELECT ID_Bus from buses;";
                 $result22 = mysqli_query($con,$sql22);
@@ -98,9 +95,9 @@ FROM workplan JOIN tours ON workplan.ID_Tour = tours.ID_Tour WHERE Date_Work='$d
                 echo '
     </select>
    
-    <input type="text" name="Start_Time" onchange="changeit(' . $record['ID_Work'] . ', \'Start_Time\', this)" value="' . $record['Start_Time'] . '">
-    <input type="text" name="End_Time" onchange="changeit(' . $record['ID_Work'] . ', \'End_Time\', this)" value="' . $record['End_Time'] . '">
-    <input type="text" name="Total_Time" onchange="changeit(' . $record['ID_Work'] . ', \'Total_Time\', this)" value="' . $record['Total_Time'] . '">
+    <input class="w3-input w3-border" style="width: 16%; display: inline" type="text" name="Start_Time" onchange="changeit(' . $record['ID_Work'] . ', \'Start_Time\', this)" value="' . $record['Start_Time'] . '">
+    <input class="w3-input w3-border" style="width: 16%; display: inline" type="text" name="End_Time" onchange="changeit(' . $record['ID_Work'] . ', \'End_Time\', this)" value="' . $record['End_Time'] . '">
+    <input class="w3-input w3-border" style="width: 16%; display: inline" type="text" name="Total_Time" onchange="changeit(' . $record['ID_Work'] . ', \'Total_Time\', this)" value="' . $record['Total_Time'] . '">
 </form>';
 
             }
