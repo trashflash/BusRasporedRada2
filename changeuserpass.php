@@ -1,5 +1,10 @@
 <?php
-include_once ('db_config.php'); ?>
+include_once ('db_config.php');
+include_once ('auth.php');
+if(!isset($_SESSION["ISAdmin"])){
+    header("Location: index.php");
+    exit();
+} ?>
 
 <!-- Ova stranica je završena i nema potrebe dalje je menjati.-->
 

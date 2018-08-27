@@ -1,5 +1,9 @@
 <?php
-
+include_once ('auth.php');
+if(!isset($_SESSION["ISAdmin"])){
+    header("Location: index.php");
+    exit();
+}
 include_once("sidebar.php");
 if($_SESSION["ISAdmin"]!=111)
 {
