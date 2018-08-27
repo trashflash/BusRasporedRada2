@@ -147,7 +147,7 @@ WHERE Type_Tour=$selecttour and Type_Day=$selectday";
 
 <?php
 
-$isfrom=0;
+/*$isfrom=0;
 $isto=1;
 if(isset($_REQUEST['datefrom'])) {
     $sqlfrom="SELECT * FROM workplan WHERE Date_Work=$datefrom";
@@ -160,33 +160,36 @@ if (mysqli_num_rows($result) > 0) {
 }};
 $nosuccess=64;
 if(isset($_REQUEST['dateto'])) {
-    $sqlto="SELECT * FROM workplan WHERE Date_Work=$datefrom";
+    $sqlto="SELECT * FROM workplan WHERE Date_Work=$dateto";
     $result = mysqli_query($con,$sqlto);
     if (mysqli_num_rows($result) > 0) {
         while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
 
-            $isto=0;
+            $isto=1;
 
         }
     };
 
 
 if($isfrom==1){
-    if($isto==0) {
+    if($isto==1) {
+*/
+if(isset($_REQUEST['dateto'])) {
 
-        $sqldates = "INSERT INTO workplan(ID_Tour,ID_Driver,ID_Bus1,Date_Work,Start_Time,End_Time,Total_Time) SELECT ID_Tour, ID_Driver, ID_Bus1, '$dateto', Start_Time, End_Time, Total_Time FROM workplan
+    $sqldates = "INSERT INTO workplan(ID_Tour,ID_Driver,ID_Bus1,Date_Work,Start_Time,End_Time,Total_Time) SELECT ID_Tour, ID_Driver, ID_Bus1, '$dateto', Start_Time, End_Time, Total_Time FROM workplan
 WHERE Date_Work='$datefrom'";
-        $result = mysqli_query($con,$sqldates);
-        if($result){
-            echo "successkop";
-        }
-            $query = "INSERT INTO orders(OrderDate, OrderText, OrderImportance) VALUES '$date', '0', 0";
-            $result2 = mysqli_query($con,$query);
-            if($result2){
-                echo "success2kop";
-            }
-        }
+    $result = mysqli_query($con, $sqldates);
+    if ($result) {
+        echo "successkop";
+    }
+    $query3 = "INSERT INTO orders(OrderDate, OrderText, OrderImportance) VALUES ('$dateto', '0', 0)";
+    $result2 = mysqli_query($con, $query3);
+    if ($result2) {
+        echo "success2kop";
+    }
+}
+        }/*
         else {
 
 }
@@ -199,7 +202,7 @@ if($nosuccess==99){
    echo "nije success kopiranje datuma";
 }}}
 
-
+*/
 ?>
 </div>
 </body>

@@ -114,7 +114,8 @@ if(!isset($_SESSION["ISAdmin"])){
                     elseif ($record['Area'] == 4) $area = 'MEŠOVITO';
                     elseif ($record['Area'] == 5) $area = 'TURISTIČKI';
                     else $area = 'DRUGO';
-                    $sqll = "SELECT count(distinct w.Date_Work) as datte,SEC_TO_TIME(sum(w.Total_Time)) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=" . $record['ID_Driver'] . "";
+                    $driverid=$record['ID_Driver'];
+                    $sqll = "SELECT count(distinct w.Date_Work) as datte,SEC_TO_TIME( SUM( TIME_TO_SEC(w.Total_Time) ) ) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=$driverid and month(Date_Work)=month(now())";
                     $resultl = mysqli_query($connection, $sqll) or die(mysqli_error($connection));
                     if (mysqli_num_rows($resultl) > 0) {
                         while ($recordl = mysqli_fetch_array($resultl, MYSQLI_ASSOC)) {
@@ -161,7 +162,7 @@ if(!isset($_SESSION["ISAdmin"])){
                         }}}
             }
         }else{
-            $sql = "SELECT * FROM drivers";
+            $sql = "SELECT * FROM drivers order by ID_Driver asc";
             $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 
             if (mysqli_num_rows($result) > 0) {
@@ -172,18 +173,23 @@ if(!isset($_SESSION["ISAdmin"])){
                     elseif ($record['Area'] == 4) $area = 'MEŠOVITO';
                     elseif ($record['Area'] == 5) $area = 'TURISTIČKI';
                     else $area = 'DRUGO';
-                    $sqll = "SELECT count(distinct w.Date_Work) as datte,SEC_TO_TIME(sum(w.Total_Time)) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=" . $record['ID_Driver'] . "";
+                    $drivercount=$record['ID_Driver'];
+                    $sqll = "SELECT count(distinct w.Date_Work) as datte,SEC_TO_TIME(sum(TIME_TO_SEC(w.Total_Time))) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=$drivercount";
                     $resultl = mysqli_query($connection, $sqll) or die(mysqli_error($connection));
                     if (mysqli_num_rows($resultl) > 0) {
                         while ($recordl = mysqli_fetch_array($resultl, MYSQLI_ASSOC)) {
-
+                            if($recordl['summ']>0){
+                                $sumofhours=$recordl['summ'];}
+                            else{
+                                $sumofhours="00:00:00";
+                            }
                             echo '<tr><td>' . $record['ID_Driver'] . '</td>
                         <td><img src="' . $record['Photo_Link_Driver'] . '" style="height:50px"></td>
                         <td>' . $record['First_Name'] . ', ' . $record['Last_Name'] . '</td>
                         <td>' . $area . '</td>
                         <td>' . $record['Bus_Own'] . '</td>
                         <td>' . $recordl['datte'] . '</td>
-                        <td>' . $recordl['summ'] . '</td>
+                        <td>' . $sumofhours . '</td>
                         <td>' . $dig . '</td>
                         <td>MENJAJ / <a href="EditDriver.php?drivers=' . $record['ID_Driver'] . '" onclick="return confirm(\'Da li ste sigurni?\');">BRIŠI</a></td></tr>';
                         }}}

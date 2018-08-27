@@ -59,15 +59,21 @@ include_once ('db_config.php');
         echo' <div class="w3-bar w3-aqua">
  
  <div class="w3-bar-item">SLOBODNI:</div>';
-        $sqlad = "SELECT  *
+        $sqlad = "SELECT  drivers.ID_Driver
 FROM    drivers
 WHERE   NOT EXISTS
         (
         SELECT  NULL
         FROM    workplan w
         WHERE   w.ID_Driver = drivers.ID_Driver AND Date_Work='$dateshow'
-        ) AND NOT EXISTS ( SELECT * from absences WHERE Reason LIKE 'GOD%' AND ToDate>'$dateshow' AND FromDate<='$dateshow' )
-        AND NOT EXISTS ( SELECT * from absences WHERE Reason='$reasonb' AND ToDate>'$dateshow' AND FromDate<='$dateshow' )";
+        )  AND NOT EXISTS
+        (
+        SELECT  NULL
+        FROM    absences a
+        WHERE   a.ID_Driver = drivers.ID_Driver AND ToDate>'$dateshow' AND FromDate<='$dateshow'
+        )  
+        
+        ORDER BY `ID_Driver` ASC  ";
         $result = mysqli_query($con, $sqlad);
         if (mysqli_num_rows($result) > 0) {
             while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -99,7 +105,7 @@ WHERE   NOT EXISTS
         }
 
         echo' <div class="w3-bar w3-cyan">
- <div class="w3-bar-item">BOLOVANJA:</div>';
+ <div class="w3-bar-item">BOLOVANJE:</div>';
         $sqlab = "SELECT * from absences WHERE Reason='$reasonb' AND ToDate>'$dateshow' AND FromDate<='$dateshow'";
         $result = mysqli_query($con, $sqlab);
         if (mysqli_num_rows($result) > 0) {
@@ -122,7 +128,7 @@ WHERE   NOT EXISTS
 
         <?php
 
-        $sql = "SELECT DISTINCT(workplan.ID_Tour),tours.`Name` as Namea, workplan.Start_Time as starttime, workplan.End_Time as endtime, workplan.ID_Driver as driver, workplan.ID_Bus1 as bus, workplan.Total_Time as total from workplan JOIN tours on workplan.ID_Tour = tours.ID_Tour where workplan.Date_Work='$dateshow' ORDER BY tours.`Name`";
+        $sql = "SELECT DISTINCT(workplan.ID_Tour),tours.`Name` as Namea, tours.Photo_Link_Tour, workplan.Start_Time as starttime, workplan.End_Time as endtime, workplan.ID_Driver as driver, workplan.ID_Bus1 as bus, workplan.Total_Time as total from workplan JOIN tours on workplan.ID_Tour = tours.ID_Tour where workplan.Date_Work='$dateshow' ORDER BY tours.`Name`";
         $i = 0;
         $result = mysqli_query($con, $sql);
 
@@ -138,10 +144,19 @@ WHERE   NOT EXISTS
                     $i = $strName1;
                 }
 
+                if( $record['Photo_Link_Tour']!=null){
+                    if($record['Photo_Link_Tour']=='null'){
+                        $photorec="#";
+                    }
+                    else $photorec=$record['Photo_Link_Tour'];}
+                else{
+                    $photorec="#";
+                }
+
                 echo '<td>
-<div class="ispis">TL:    ' . $record['Namea'] . '</div>
-<div class="ispis">Vozač: ' . $record['driver'] . '</div>
-<div class="ispis">Bus:   ' . $record['bus'] . '</div>
+<div class="ispis"><b>TL:    ' . $record['Namea'] . ' <a href="'.$photorec.'">Skini PDF</b></a></div>
+<div class="ispis">Vozač: <b>' . $record['driver'] . '</b></div>
+<div class="ispis">Bus:   <b>' . $record['bus'] . '</b></div>
 <div class="ispis">Početak:' . $record['starttime'] . '</div>
 <div class="ispis">Kraj:   ' . $record['endtime'] . '</div>
 <div class="ispis">Ukupno: ' . $record['endtime'] . '</div>

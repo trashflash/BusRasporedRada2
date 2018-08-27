@@ -1,4 +1,6 @@
 <?php
+include_once("db_config.php");
+
 include_once ('auth.php');
 if(!isset($_SESSION["ISAdmin"])){
     header("Location: index.php");
@@ -12,7 +14,7 @@ if($_SESSION["ISAdmin"]!=111)
 }
 
 ?>
-
+<head> <meta charset="utf-8"></head>
 <body>
 
 
@@ -20,7 +22,6 @@ if($_SESSION["ISAdmin"]!=111)
 
 <?php
 
-include_once("db_config.php");
 
 if((@$_GET['action'] != 'edit') && !(isset($_GET['date']))) {
  echo ' <form class="w3-container" method="get" action="">
@@ -84,8 +85,8 @@ FROM workplan JOIN tours ON workplan.ID_Tour = tours.ID_Tour WHERE Date_Work='$d
 
                 echo '<select class="w3-select w3-border" style="width: 16%" name="ID_Driver" onchange="changeit(' . $record['ID_Work'] . ', \'ID_Driver\', this)" >
                 <option value="' . $record['ID_Driver'] . '">' . $record['ID_Driver'] . '</option>';
-                $sql23="SELECT ID_Driver, First_Name, Last_Name from drivers;";
-                $result23 = mysqli_query($con,$sql23);
+                $sql23="SELECT ID_Driver, First_Name, Last_Name from drivers order by ID_Driver asc;";
+                $result23 = mysqli_query($connection,$sql23);
                 if (mysqli_num_rows($result23) > 0) {
                     while ($record23 = mysqli_fetch_array($result23, MYSQLI_ASSOC)) {
                         echo ' <option value="' . $record23['ID_Driver'] . '">' . $record23['ID_Driver'] .' - '.  $record23['First_Name'] .' ' .  $record23['Last_Name'] . '</option>';

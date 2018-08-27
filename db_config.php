@@ -20,6 +20,10 @@ mysqli_query($connection,"SET NAMES utf8") or die (mysqli_error($connection));
 mysqli_query($connection,"SET CHARACTER SET utf8") or die (mysqli_error($connection));
 mysqli_query($connection,"SET COLLATION_CONNECTION='utf8_general_ci'") or die (mysqli_error($connection));
 
+mysqli_query($con,"SET NAMES utf8") or die (mysqli_error($con));
+mysqli_query($con,"SET CHARACTER SET utf8") or die (mysqli_error($con));
+mysqli_query($con,"SET COLLATION_CONNECTION='utf8_general_ci'") or die (mysqli_error($con));
+
 ?>
 <head>
     <meta charset="utf-8">
