@@ -21,13 +21,12 @@ if(!isset($_SESSION["ISAdmin"])){
         <form name="registration" action="" method="post">
             <input type="text" name="SRNUM" placeholder="Službeni broj" style="width:500px;" />
             <select class="w3-select w3-light-gray" name="optiona">
-                <option value="" disabled selected>Odaberite opciju.</option>
-                <option value="1">GRADSKI SOLO</option>
-                <option value="2">GRADSKI ZGLOBNI</option>
-                <option value="3">PRIGRADSKI</option>
-                <option value="4">MEĐUGRADSKI</option>
-                <option value="5">GRADSKI MINIBUS</option>
-                <option value="6">MEĐUGRADSKI MINIBUS</option>
+                <option value="" disabled selected>Odaberite u kom prevozu radi.</option>
+                <option value="1">GRADSKI</option>
+                <option value="2">PRIGRADSKI</option>
+                <option value="3">MEĐUGRADSKI</option>
+                <option value="4">MEŠOVITO</option>
+                <option value="5">TURISTIČKI</option>
             </select>
             <input type="submit" name="submit" value="Pretraži vozače!" />
         </form>
