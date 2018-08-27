@@ -48,12 +48,11 @@ include_once ('db_config.php');
             <label class="w3-text-teal"><b>Područje rada</b></label>
             <select class="w3-select w3-light-gray" name="area">
                 <option value="" disabled selected>Odaberite opciju.</option>
-                <option value="1">GRADSKI SOLO</option>
-                <option value="2">GRADSKI ZGLOBNI</option>
-                <option value="3">PRIGRADSKI</option>
-                <option value="4">MEĐUGRADSKI</option>
-                <option value="5">GRADSKI MINIBUS</option>
-                <option value="6">MEĐUGRADSKI MINIBUS</option>
+                <option value="1">GRADSKI</option>
+                <option value="2">PRIGRADSKI</option>
+                <option value="3">MEĐUGRADSKI</option>
+                <option value="4">MEŠOVITO</option>
+                <option value="5">TURISTIČKI</option>
             </select>
 
             <label class="w3-text-teal"><b>Slika</b></label>
@@ -105,12 +104,11 @@ include_once ('db_config.php');
             if (mysqli_num_rows($result) > 0) {
                 while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     if ($record['Digital_Tachograph'] == 1) $dig = 'IMA'; else $dig = 'NEMA';
-                    if ($record['Area'] == 1) $area = 'GRADSKI SOLO'; elseif ($record['Area'] == 2) $area = 'GRADSKI ZGLOBNI';
-                    elseif ($record['Area'] == 3) $area = 'PRIGRADSKI';
-                    elseif ($record['Area'] == 4) $area = 'MEĐUGRADSKI';
-                    elseif ($record['Area'] == 5) $area = 'GRADSKI MINIBUS';
-                    elseif ($record['Area'] == 6) $area = 'MEĐUGRADSKI MINIBUS';
-                    else $area = 'TURISTIČKI';
+                    if ($record['Area'] == 1) $area = 'GRADSKI'; elseif ($record['Area'] == 2) $area = 'PRIGRADSKI';
+                    elseif ($record['Area'] == 3) $area = 'MEĐUGRADSKI';
+                    elseif ($record['Area'] == 4) $area = 'MEŠOVITO';
+                    elseif ($record['Area'] == 5) $area = 'TURISTIČKI';
+                    else $area = 'DRUGO';
                     $sqll = "SELECT count(distinct w.Date_Work) as datte,SEC_TO_TIME(sum(w.Total_Time)) as summ FROM drivers d join workplan w on d.ID_Driver=w.ID_Driver where w.ID_Driver=" . $record['ID_Driver'] . "";
                     $resultl = mysqli_query($connection, $sqll) or die(mysqli_error($connection));
                     if (mysqli_num_rows($resultl) > 0) {
