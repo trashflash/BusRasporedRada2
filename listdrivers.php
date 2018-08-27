@@ -24,7 +24,7 @@ include_once ('db_config.php');
                 <option value="5">GRADSKI MINIBUS</option>
                 <option value="6">MEĐUGRADSKI MINIBUS</option>
             </select>
-            <input type="submit" name="submit" value="Pretraži autobuse!" />
+            <input type="submit" name="submit" value="Pretraži vozače!" />
         </form>
     </div>
 
