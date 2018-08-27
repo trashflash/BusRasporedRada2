@@ -6,6 +6,6 @@ include('sidebar.php');
     <label class="w3-text-teal"><b>Autori ovog predivnog i funkcionalnog sajta su: </b> </label>
     <button class="w3-btn w3-blue-grey" id="btn">Pritisni gumb!</button>
     <div id="jsona"></div>
-    <?php var_dump($_SESSION);?>
+    <h2>Dobrodošli na stranicu rasporeda rada u javnom preduzeću za putnički prevoz!</h2>
 </div>
 <script src="js/json.js"></script>
